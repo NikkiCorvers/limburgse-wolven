@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -7,6 +9,9 @@ namespace WolvenApp.Models
 {
     public class Zwerver
     {
-        public virtual Bewoner Bewoner;
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Key]
+        public int ZwerverId { get; set; }
+        public virtual Bewoner Bewoner { get; set; }
     }
 }
