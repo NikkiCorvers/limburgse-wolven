@@ -14,7 +14,6 @@ namespace WolvenApp.DAL
             var reservaties = new List<Reservatie>();
             var groepen = new List<Groep>();
             var personen = new List<Persoon>();
-            var dorpen = new List<Dorp>();
             int i = 1;
             while (i < 73)
             {
@@ -47,7 +46,6 @@ namespace WolvenApp.DAL
             reservaties.ForEach(s => context.Reservaties.Add(s));
             groepen.ForEach(g => context.Groepen.Add(g));
             personen.ForEach(p => context.Personen.Add(p));
-            dorpen.ForEach(d => context.Dorpen.Add(d));
             context.SaveChanges();
         }
     }
