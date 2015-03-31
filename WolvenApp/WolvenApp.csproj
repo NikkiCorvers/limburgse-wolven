@@ -182,7 +182,7 @@
     <Compile Include="Models\Persoon.cs" />
     <Compile Include="Models\Reservatie.cs" />
     <Compile Include="Models\Rol.cs" />
-    <Compile Include="Auth\UserProfile.cs" />
+    <Compile Include="Auth\User.cs" />
     <Compile Include="Models\Zwerver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

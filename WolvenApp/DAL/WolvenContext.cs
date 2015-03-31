@@ -20,12 +20,12 @@ namespace WolvenApp.DAL
         public DbSet<Rol> Rollen { get; set; }
         public DbSet<Zwerver> Zwervers { get; set; }
 
-        public DbSet<UserProfile> Users { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-            modelBuilder.Entity<UserProfile>().HasOptional(u => u.Dorp);
+            modelBuilder.Entity<User>().HasOptional(u => u.Dorp);
             modelBuilder.Entity<Bewoner>().HasOptional(b => b.Rol);
         }
     }

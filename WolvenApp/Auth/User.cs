@@ -9,7 +9,7 @@ using WolvenApp.Models;
 
 namespace WolvenApp.Auth
 {
-    public class UserProfile
+    public class User
     {
         [Required(ErrorMessage = "Please tell us your name")]
         [DisplayName("Your Name")]

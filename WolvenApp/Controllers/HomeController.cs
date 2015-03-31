@@ -43,10 +43,10 @@ namespace WolvenApp.Controllers
             Person me = plusService.People.Get("me").Execute();
 
             // check if the user is already in our database
-            UserProfile account = db.Users.FirstOrDefault(u =>
+            User account = db.Users.FirstOrDefault(u =>
                 u.UserId.Equals(me.Id));
             
-            UserProfile profile = new UserProfile()
+            User profile = new User()
             {
                 Name = me.Name.GivenName + " " + me.Name.FamilyName,
                 Email = me.Emails.ElementAt(0).Value,
