@@ -1,0 +1,10 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+@if (@Session["login"] == null) { 
+    <p>@Html.ActionLink("Log in", "GoogleLogin")</p>
+}
+else {
+    <p>Logged in!</p>
+}

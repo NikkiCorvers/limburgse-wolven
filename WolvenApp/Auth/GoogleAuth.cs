@@ -19,8 +19,8 @@ namespace WolvenApp.Auth
                 {
                     ClientSecrets = new ClientSecrets
                     {
-                        ClientId = "my-app-client-id.apps.googleusercontent.com",
-                        ClientSecret = "my-app-client-secret"
+                        ClientId = "631570348379-docrq1njcticg91g5puf6sa7q861osna.apps.googleusercontent.com",
+                        ClientSecret = "leflwZyAcwfyF-MzFayb12hY"
                     },
                     Scopes = new[] 
                     { 

@@ -11,11 +11,10 @@ using System.Web;
 using System.Web.Mvc;
 using WolvenApp.Auth;
 using WolvenApp.DAL;
-using WolvenApp.Models;
 
 namespace WolvenApp.Controllers
 {
-    public class AuthController : Controller
+    public class HomeController : Controller
     {
         private WolvenContext db = new WolvenContext();
 
@@ -46,29 +45,27 @@ namespace WolvenApp.Controllers
             // check if the user is already in our database
             UserProfile account = db.Users.FirstOrDefault(u =>
                 u.UserId.Equals(me.Id));
+            
+            UserProfile profile = new UserProfile()
+            {
+                Name = me.Name.GivenName + " " + me.Name.FamilyName,
+                Email = me.Emails.ElementAt(0).Value,
+                DisplayName = me.DisplayName,
+                Picture = me.Image.Url,
+                UserId = me.Id,
+                Provider = IdentityProvider.Google
+            };
 
             if (account == null)
-                // this is a new user -> register view
-            {
-                UserProfile profile = new UserProfile()
-                {
-                    Name = me.Name.GivenName + " " + me.Name.FamilyName,
-                    Email = me.Emails.ElementAt(0).Value,
-                    DisplayName = me.DisplayName,
-                    Picture = me.Image.Url,
-                    UserId = me.Id,
-                    Provider = IdentityProvider.Google
-                };
-                TempData["newProfile"] = profile;
-                return RedirectToAction("register", "account");
+            // this is a new user -> register view
+            {            
+                db.Users.Add(profile);
+                db.SaveChanges();
             }
 
-            else
-            {
-                // this is a registered user -> login
-            }
+            Session["login"] = profile;
 
             return RedirectToAction("Index", "home");
         }
-	}
+    }
 }
