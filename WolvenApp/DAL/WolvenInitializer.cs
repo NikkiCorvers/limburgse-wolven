@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using WolvenApp.Models;
+using WolvenApp.Auth;
 
 namespace WolvenApp.DAL
 {
@@ -44,10 +45,21 @@ namespace WolvenApp.DAL
                 } // j
             } // i
 
+            UserProfile admin = new UserProfile()
+            {
+                Name = "admin",
+                Email = "admin@admin.com",
+                DisplayName = "Mrs Admin",
+                Picture = "test",
+                Provider = 0,
+                UserId = "1"
+            };
+
+            context.Users.Add(admin);
+            context.SaveChanges();
             reservaties.ForEach(s => context.Reservaties.Add(s));
             groepen.ForEach(g => context.Groepen.Add(g));
             personen.ForEach(p => context.Personen.Add(p));
-            dorpen.ForEach(d => context.Dorpen.Add(d));
             context.SaveChanges();
         }
     }

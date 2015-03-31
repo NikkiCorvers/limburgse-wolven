@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using MySql.Data.Entity;
+using WolvenApp.Auth;
 
 namespace WolvenApp.DAL
 {
@@ -19,9 +20,13 @@ namespace WolvenApp.DAL
         public DbSet<Rol> Rollen { get; set; }
         public DbSet<Zwerver> Zwervers { get; set; }
 
+        public DbSet<UserProfile> Users { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Entity<UserProfile>().HasOptional(u => u.Dorp);
+            modelBuilder.Entity<Bewoner>().HasOptional(b => b.Rol);
         }
     }
 }
